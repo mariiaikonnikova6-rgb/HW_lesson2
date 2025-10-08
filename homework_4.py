@@ -9,7 +9,7 @@ img_copy = img.copy()
 
 img_copy = cv2.cvtColor(img_copy, cv2.COLOR_BGR2GRAY)
 img_copy = cv2.GaussianBlur(img_copy, (5, 5), 2)
-# img_copy = cv2.equalizeHist(img_copy)
+
 img_copy = cv2.Canny(img_copy, 100, 100)
 contours, hierarchy = cv2.findContours(img_copy, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -30,3 +30,4 @@ cv2.imshow('Copy border', img_copy_color)
 cv2.imshow('Borders', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
