@@ -24,16 +24,22 @@ while True:
     mask = cv2.bitwise_or(mask1, mask2)
 
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    isNotDetected = False
+    isDetected = False
     for cnt in contours:
         area = cv2.contourArea(cnt)
         if area > 1000:
             x, y, w, h = cv2.boundingRect(cnt)
             cv2.rectangle(frame, (2, 2), (640, 400), (0, 255, 0), 2)
-            perimeter = cv2.arcLength(cnt, True)
-            cv2.putText(frame, f'object detected', (20, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+            isDetected = True
         elif area < 1000:
-            cv2.putText(frame, f'object not detected', (20, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
-            cv2.rectangle(frame, (2, 2), (640, 400), (255, 0, 0), 2)
+            cv2.rectangle(frame, (2, 2), (640, 400), (0, 0, 255), 2)
+            isNotDetected = True
+
+    if isDetected:
+        cv2.putText(frame, f'object detected', (20, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
+    elif isNotDetected:
+        cv2.putText(frame, f'object not detected', (20, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
 
     cv2.imshow('video', frame)
     cv2.imshow('mask', mask)
