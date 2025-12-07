@@ -1,0 +1,11 @@
+shape_id,shape_name,num_sides,has_curves,formula_example
+1,Circle,0,True,Area = πr^2
+2,Square,4,False,Area = a^2
+3,Triangle,3,False,Area = 1/2 * a * h
+4,Rectangle,4,False,Area = a * b
+5,Pentagon,5,False,Area = (5a^2)/(4 tan(π/5))
+6,Hexagon,6,False,Area = (3√3 / 2) * a^2
+7,Heptagon,7,False,Area ≈ (7 / 4) * a^2 * cot(π/7)
+8,Octagon,8,False,Area = 2(1+√2)a^2
+9,Ellipse,0,True,Area = πab
+10,Star,10,False,Area = depends on star shape (regular/concave)
