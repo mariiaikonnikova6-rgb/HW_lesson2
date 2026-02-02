@@ -4,8 +4,7 @@ import shutil
 import os
 
 SCRIPT_DIR = os.path.dirname(__file__)
-# Script is inside .../CW_Lesson13/out, but models/images are in .../CW_Lesson13
-PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
+
 MODELS_DIR = os.path.join(PROJECT_DIR, 'models')
 IMAGES_DIR = os.path.join(PROJECT_DIR, 'images')
 
@@ -26,8 +25,8 @@ def first_existing(paths):
     return None
 
 MODEL_DIR_CANDIDATES = [
-    MODELS_DIR,  # .../CW_Lesson13/models
-    os.path.join(SCRIPT_DIR, 'models'),  # .../CW_Lesson13/out/models
+    MODELS_DIR, 
+    os.path.join(SCRIPT_DIR, 'models'),  
     os.path.join(PROJECT_DIR, '..', 'data', 'MobileNet'),
 ]
 
@@ -139,4 +138,5 @@ for file in files:
         shutil.copyfile(in_path, out_path)
 
 print(f'people: {count_people}, no_people: {count_no_people}')
+
 
